@@ -1,9 +1,17 @@
 import { generateLinkedList } from './index';
 
+interface IElement {
+  [key: string]: IElement | number | string;
+}
 describe('generateLinkedList', () => {
   // Check match by expect(...).toStrictEqual(...)
   test('should generate linked list from values 1', () => {
-    const elements1: Object[] = [{ a: 1 }, { a: 2 }, { b: 3 }, { c: { d: 4 } }];
+    const elements1: IElement[] = [
+      { a: 1 },
+      { a: 2 },
+      { b: 3 },
+      { c: { d: 4 } },
+    ];
     const generateLinkedList1 = generateLinkedList(elements1);
     const elements2 = [...elements1];
     const generateLinkedList2 = generateLinkedList(elements2);
@@ -18,7 +26,7 @@ describe('generateLinkedList', () => {
 
   // Check match by comparison with snapshot
   test('should generate linked list from values 2', () => {
-    const elements3: Object[] = [
+    const elements3: IElement[] = [
       { c: 11 },
       { field1: 22 },
       { b: 3 },
@@ -30,7 +38,7 @@ describe('generateLinkedList', () => {
     const generateLinkedList2 = generateLinkedList(elements4);
     expect(generateLinkedList2).toMatchSnapshot('object');
 
-    const elements5: Number[] = [11, 222, 333, 4444];
+    const elements5: number[] = [11, 222, 333, 4444];
     const generateLinkedList3 = generateLinkedList(elements5);
     expect(generateLinkedList3).toMatchSnapshot('number');
     const elements6 = [...elements5];
