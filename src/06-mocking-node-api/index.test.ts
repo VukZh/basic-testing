@@ -24,6 +24,7 @@ describe('doStuffByTimeout', () => {
 
   afterAll(() => {
     jest.useRealTimers();
+    jest.clearAllMocks();
   });
 
   beforeEach(() => {
