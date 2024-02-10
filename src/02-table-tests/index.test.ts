@@ -48,35 +48,35 @@ const testCasesInvalidArgsAndActions = [
 
 describe('simpleCalculator', () => {
   test.each(testCasesAdd)(
-    'should add two numbers',
+    'returns $expected when $a is added to $b',
     ({ a, b, action, expected }) => {
       expect(simpleCalculator({ a, b, action })).toBe(expected);
     },
   );
 
   test.each(testCasesSub)(
-    'should subtract two numbers',
+    'returns $expected when $a is added to $b',
     ({ a, b, action, expected }) => {
       expect(simpleCalculator({ a, b, action })).toBe(expected);
     },
   );
 
   test.each(testCasesMul)(
-    'should multiply two numbers',
+    'returns $expected when $a is multiplied to $b',
     ({ a, b, action, expected }) => {
       expect(simpleCalculator({ a, b, action })).toBe(expected);
     },
   );
 
   test.each([testCasesDiv])(
-    'should divide two number',
+    'returns $expected when $a is divided to $b',
     ({ a, b, action, expected }) => {
       expect(simpleCalculator({ a, b, action })).toBe(expected);
     },
   );
 
   test.each(testCasesExp)(
-    'should exponentiate two numbers',
+    'returns $expected when $a is raised to a power to $b',
     ({ a, b, action, expected }) => {
       expect(simpleCalculator({ a, b, action })).toBe(expected);
     },
