@@ -40,10 +40,16 @@ const testCasesExp = [
   { a: 110, b: 2, action: Action.Exponentiate, expected: 12100 },
 ];
 
-const testCasesInvalidArgsAndActions = [
+const testCasesInvalidArgs = [
   { a: true, b: 2, action: Action.Exponentiate, expected: null },
   { a: 2, b: '2', action: Action.Exponentiate, expected: null },
-  { a: 3, b: 2, action: 'Action', expected: null },
+  { a: 3, b: '2', action: Action.Add, expected: null },
+];
+
+const testCasesInvalidActions = [
+  { a: 2, b: 2, action: 'Action', expected: null },
+  { a: 2, b: 0, action: {}, expected: null },
+  { a: 3, b: 2, action: true, expected: null },
 ];
 
 describe('simpleCalculator', () => {
@@ -82,7 +88,14 @@ describe('simpleCalculator', () => {
     },
   );
 
-  test.each(testCasesInvalidArgsAndActions)(
+  test.each(testCasesInvalidArgs)(
+    'should return null for invalid action and invalid arguments',
+    ({ a, b, action, expected }) => {
+      expect(simpleCalculator({ a, b, action })).toBe(expected);
+    },
+  );
+
+  test.each(testCasesInvalidActions)(
     'should return null for invalid action and invalid arguments',
     ({ a, b, action, expected }) => {
       expect(simpleCalculator({ a, b, action })).toBe(expected);
