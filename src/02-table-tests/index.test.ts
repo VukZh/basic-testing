@@ -61,7 +61,7 @@ describe('simpleCalculator', () => {
   );
 
   test.each(testCasesSub)(
-    'returns $expected when $a is added to $b',
+    'returns $expected when $a is subtracted to $b',
     ({ a, b, action, expected }) => {
       expect(simpleCalculator({ a, b, action })).toBe(expected);
     },
@@ -74,7 +74,7 @@ describe('simpleCalculator', () => {
     },
   );
 
-  test.each([testCasesDiv])(
+  test.each(testCasesDiv)(
     'returns $expected when $a is divided to $b',
     ({ a, b, action, expected }) => {
       expect(simpleCalculator({ a, b, action })).toBe(expected);
